@@ -2,7 +2,7 @@
 class Provider{
 	public $url;
 	public $titleRegex = '/S(\d+)E(\d+)/i';
-	public$withZero = 1;
+	public $withZero = 1;
 	
 	public function fixTitle($title){
 		return $title;

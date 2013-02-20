@@ -1,0 +1,48 @@
+{% set token = csrf() %}
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<title>WafflesTV</title>
+	<meta charset="utf8" />
+	<link href="/css/normalize.css" rel="stylesheet" />
+	<link href="/css/site.css" rel="stylesheet" />
+{% for stylesheet in stylesheets %}
+	<link href="/css/{{stylesheet}}" rel="stylesheet" />
+{% endfor %}
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<style type="text/css">header,nav,section,article,aside,footer,hgroup,main { display: block;}</style>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<![endif]-->
+	<script src="/scripts/jessie.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<header>
+		<h1 id="logo">WafflesTV</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</li>
+				<li><a href="/upcoming">Upcoming</li>
+				<li><a href="/logs">Logs</li>
+				<li><a href="/settings">Settings</a>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div id="content">
+		{% block content %}
+		{% endblock %}
+		</div>
+	</main>
+	<footer>
+		<p></p>
+	</footer>
+</div>
+<script src="/scripts/site.js"></script>
+{% for script in scripts %}
+	<script src="/scripts/{{ script }}"></script>
+{% endfor %}
+</script>
+</body>
+</html>

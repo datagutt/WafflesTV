@@ -9,7 +9,13 @@ require APP_DIR . 'classes/Show.php';
 class IndexController extends Controller{
 	public function index(){
 		$p = new DailyTvTorrents();
+		$all = id(new Show)->all();
+		foreach($all as $show){
+			$s = new Show($show['name'], $show['tvdbID']);
+		}
 		//$result = $p->getTorrent('The Simpsons', '24', '12');
-		echo $this->view->render('shows.html');
+		echo $this->view->render('shows.html', array(
+			'shows' => $all
+		));
 	}
 }

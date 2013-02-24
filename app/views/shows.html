@@ -2,4 +2,9 @@
 {% set stylesheets = ["shows.css"] %}
 {% block content %}
 <h2>Shows</h2>
+<div id="shows">
+{% for show in shows %}
+	<div class="show"><h3><a href="/show/url/{{ show.url }}">{{ show.name }}</a></h3><a href="/show/url/{{ show.url }}"><img src="http://thetvdb.com/banners/{{ show.banner }}"></a></div>
+{% endfor %}
+</div>
 {% endblock %}

@@ -9,7 +9,7 @@ use TvDb\Client;
 class Show{
 	public $name;
 	public $tvdbID;
-	private $banner;
+	public $banner;
 	
 	public function __construct($show = array()){
 		if(isset($show) && !empty($show['name']) && !empty($show['tvdbID'])){					$this->id = (int) $show['id'];
@@ -17,8 +17,14 @@ class Show{
 			$this->url = $show['url'];
 			$this->tvdbID = (int) $show['tvdbID'];
 			$this->tvdb = $tvdb = new Client(TVDB_URL, TVDB_API_KEY);
-			$banners = $tvdb->getBanners($this->tvdbID);
-			$this->setBanner($banners[1]->thumbnailPath);
+			$banner = $this->getBanner();
+			if(!empty($banner['url'])){
+				$this->banner = $banner['url'];
+			}else{
+				$banners = $tvdb->getBanners($this->tvdbID);
+				$banner = $banners[1]->thumbnailPath;
+				$this->banner = $this->addBanner($banner);
+			}
 		}
 	}
 	
@@ -110,7 +116,20 @@ class Show{
 		);
 	}
 	
-	private function setBanner($banner){
-		$this->banner = $banner;
+	private function getBanner(){
+		global $DB;
+		$stmt = $DB->prepare('SELECT * from banners WHERE showID = :showID LIMIT 1');
+		$stmt->bindParam('showID', $this->id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+	
+	private function addBanner($banner){
+		global $DB;
+		$stmt = $DB->prepare('INSERT into banners SET showID = :showID, url = :banner');
+		$stmt->bindParam('showID', $this->id, PDO::PARAM_INT);
+		$stmt->bindParam('banner', $banner, PDO::PARAM_STR);
+		$stmt->execute();
+		return $banner;
 	}
 }

@@ -23,7 +23,7 @@ class Provider{
 		foreach($x->channel->item as $item){
 			$parsed = $this->parse($item);
 			if(is_array($parsed) && $parsed['season'] == $season && $parsed['episode'] == $episode){
-				echo 'match: ' . $needed . ' == ' . $parsed['season'].$parsed['episode'];
+				//echo 'match: ' . $needed . ' == ' . $parsed['season'].$parsed['episode'];
 				$this->download($parsed['url'], $parsed['file']);
 				return true;
 			}

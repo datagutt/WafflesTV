@@ -1,5 +1,4 @@
 <?php
-require TOP_DIR . 'config.php';
 require APP_DIR . 'classes/Show.php';
 class IndexController extends Controller{
 	public function index(){

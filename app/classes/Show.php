@@ -12,7 +12,8 @@ class Show{
 	public $banner;
 	
 	public function __construct($show = array()){
-		if(isset($show) && !empty($show['name']) && !empty($show['tvdbID'])){					$this->id = (int) $show['id'];
+		if(isset($show) && !empty($show['name']) && !empty($show['tvdbID'])){
+			$this->id = (int) $show['id'];
 			$this->name = $show['name'];
 			$this->url = $show['url'];
 			$this->tvdbID = (int) $show['tvdbID'];

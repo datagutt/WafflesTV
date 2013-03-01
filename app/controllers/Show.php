@@ -8,7 +8,6 @@ class ShowController extends Controller{
 	}
 	
 	public function url($show = ''){
-		$p = new DailyTvTorrents();
 		$show = new Show(id(new Show)->find($show));
 		//$result = $p->getTorrent('The Simpsons', '24', '12');
 		if(!empty($show->name)){

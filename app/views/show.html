@@ -1,3 +1,4 @@
+{% set scripts = ['show.js'] %}
 {% extends "base.html" %}
 {% block content %}
 <h2>{{ show.name }}</h2>
@@ -6,7 +7,7 @@
 	<div class="episode">
 		<h3>{{ episode.name }} (Season {{ episode.season }}, Episode {{ episode.number }})</h3>
 {% if episode.aired %}
-		<button class="download" data-ep="S{{ episode.season }}E{{ episode.number }}">Download this episode</button>
+		<button class="download" data-season="{{ episode.season }}" data-number="{{ episode.number }}">Download this episode</button>
 {% else %}
 		<p>Not aired yet</p>
 {% endif %}

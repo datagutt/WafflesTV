@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `episodes` (
 
 CREATE TABLE IF NOT EXISTS `shows` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `description` tinytext NOT NULL,
   `url` varchar(40) NOT NULL,
   `tvdbID` int(11) NOT NULL,

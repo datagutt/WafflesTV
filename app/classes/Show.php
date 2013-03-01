@@ -45,7 +45,7 @@ class Show{
 	
 	public function getEpisodes(){
 		global $DB;
-		$stmt = $DB->prepare('SELECT * from episodes WHERE showID = :showID');
+		$stmt = $DB->prepare('SELECT * from episodes WHERE showID = :showID ORDER by episodeID ASC');
 		$stmt->bindParam('showID', $this->id, PDO::PARAM_INT);
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,6 +78,7 @@ class Show{
 		}else{
 			$serieEpisodes = $this->tvdb->getSerieEpisodes($this->tvdbID);
 			$eps = $serieEpisodes['episodes'];
+			var_dump($episode);
 			foreach($eps as $episode){
 				if(is_object($episode->firstAired)){
 					$airDate = $episode->firstAired->getTimeStamp();
@@ -123,7 +124,6 @@ class Show{
 	
 	public function update(){
 		global $DB;
-		// This is not a good way to update
 		$stmt = $DB->prepare('DELETE from episodes WHERE showID = :showID');
 		$stmt->bindParam('showID', $this->id, PDO::PARAM_INT);
 		$stmt->execute();

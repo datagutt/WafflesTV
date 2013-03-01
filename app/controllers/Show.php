@@ -23,11 +23,10 @@ class ShowController extends Controller{
 	}
 	
 	public function update($show = ''){
-		return false;
 		$show = new Show(id(new Show)->find($show));
 		if(!empty($show->name)){
 			$show->update();
-			header('Location: /');
+			header('Location: /show/url/' . $show->url);
 		}
 	}
 }

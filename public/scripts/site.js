@@ -10,7 +10,7 @@
 	};
 	Waffles.addToQueue = function(script){
 		var queue = Waffles.queue;
-		if(jessie& jessie.isHostMethod && jessie.isHostMethod(queue, 'push')){
+		if(jessie && jessie.isHostMethod && jessie.isHostMethod(queue, 'push')){
 			if(queue.indexOf(script) == -1){
 				queue.push(script);
 			}

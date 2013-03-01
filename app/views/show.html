@@ -5,7 +5,12 @@
 {% for episode in episodes %}
 	<div class="episode">
 		<h3>{{ episode.name }} (Season {{ episode.season }}, Episode {{ episode.number }})</h3>
+{% if episode.aired %}
 		<button class="download" data-ep="S{{ episode.season }}E{{ episode.number }}">Download this episode</button>
+{% else %}
+		<p>Not aired yet</p>
+{% endif %}
+	</div>
 {% endfor %}
 </div>
 {% endblock %}

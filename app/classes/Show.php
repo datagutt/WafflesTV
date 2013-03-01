@@ -1,9 +1,9 @@
 <?php
-include TOP_DIR . 'vendor/TvDb/CurlException.php';
-include TOP_DIR . 'vendor/TvDb/Client.php';
-include TOP_DIR . 'vendor/TvDb/Serie.php';
-include TOP_DIR . 'vendor/TvDb/Banner.php';
-include TOP_DIR . 'vendor/TvDb/Episode.php';
+require TOP_DIR . 'vendor/TvDb/CurlException.php';
+require TOP_DIR . 'vendor/TvDb/Client.php';
+require TOP_DIR . 'vendor/TvDb/Serie.php';
+require TOP_DIR . 'vendor/TvDb/Banner.php';
+require TOP_DIR . 'vendor/TvDb/Episode.php';
 use TvDb\Client;
 
 class Show{
@@ -60,7 +60,8 @@ class Show{
 						'name' => $episode['name'],
 						'season' => $episode['season'],
 						'number' => $episode['number'],
-						'airDate' => (int) $episode['airDate']
+						'airDate' => (int) $episode['airDate'],
+						'aired' => isAired($episode['airDate'])
 					));
 				}else{
 					array_push($episodes, array(
@@ -69,7 +70,8 @@ class Show{
 						'name' => $episode['name'],
 						'season' => $episode['season'],
 						'number' => $episode['number'],
-						'airDate' => (int) $episode['airDate']
+						'airDate' => (int) $episode['airDate'],
+						'aired' => isAired($episode['airDate'])
 					));
 				}
 			}
@@ -97,7 +99,8 @@ class Show{
 						'name' => $episode->name,
 						'season' => $episode->season,
 						'number' => $episode->number,
-						'airDate' => (int) $airDate
+						'airDate' => (int) $airDate,
+						'aired' => isAired($airDate)
 					));
 				}else{
 					array_push($episodes, array(
@@ -106,7 +109,8 @@ class Show{
 						'name' => $episode->name,
 						'season' => $episode->season,
 						'number' => $episode->number,
-						'airDate' => (int) $airDate
+						'airDate' => (int) $airDate,
+						'aired' => isAired($airDate)
 					));
 				}
 			}

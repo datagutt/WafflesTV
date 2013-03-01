@@ -11,7 +11,7 @@ class ShowController extends Controller{
 		$show = new Show(id(new Show)->find($show));
 		//$result = $p->getTorrent('The Simpsons', '24', '12');
 		if(!empty($show->name)){
-			$episodes= $show->getEpisodes();
+			$episodes = $show->getEpisodes();
 			echo $this->view->render('show.html', array(
 				'show' => $show,
 				'specials' => $episodes['specials'],

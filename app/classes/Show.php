@@ -43,7 +43,7 @@ class Show{
 		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 	
-	public function getEpisodes($update = false){
+	public function getEpisodes(){
 		global $DB;
 		$stmt = $DB->prepare('SELECT * from episodes WHERE showID = :showID');
 		$stmt->bindParam('showID', $this->id, PDO::PARAM_INT);
@@ -51,7 +51,7 @@ class Show{
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		$episodes = array();
 		$specials = array();
-		if($result && !$update){
+		if($result){
 			foreach($result as $episode){
 				if($episode['season'] == 0){
 					array_push($specials, array(
@@ -119,6 +119,15 @@ class Show{
 			'specials' => $specials,
 			'episodes' => $episodes
 		);
+	}
+	
+	public function update(){
+		global $DB;
+		// This is not a good way to update
+		$stmt = $DB->prepare('DELETE from episodes WHERE showID = :showID');
+		$stmt->bindParam('showID', $this->id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $this->getEpisodes();
 	}
 	
 	private function getBanner(){

@@ -21,4 +21,13 @@ class ShowController extends Controller{
 			echo '<h1>Show does not exist!</h1>';
 		}
 	}
+	
+	public function update($show = ''){
+		return false;
+		$show = new Show(id(new Show)->find($show));
+		if(!empty($show->name)){
+			$show->update();
+			header('Location: /');
+		}
+	}
 }

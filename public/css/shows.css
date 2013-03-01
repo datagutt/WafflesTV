@@ -1,0 +1,10 @@
+.show {
+	width: 30%;
+	min-height: 250px;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+	zoom: 1;
+	*display: inline;
+	_height: 250px;
+}

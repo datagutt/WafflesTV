@@ -60,7 +60,7 @@ class Show{
 						'name' => $episode['name'],
 						'season' => $episode['season'],
 						'number' => $episode['number'],
-						'airDate' => (int) $episode['airDate'],
+						'airDate' => $episode['airDate'],
 						'aired' => isAired($episode['airDate'])
 					));
 				}else{
@@ -70,7 +70,7 @@ class Show{
 						'name' => $episode['name'],
 						'season' => $episode['season'],
 						'number' => $episode['number'],
-						'airDate' => (int) $episode['airDate'],
+						'airDate' => $episode['airDate'],
 						'aired' => isAired($episode['airDate'])
 					));
 				}
@@ -99,7 +99,7 @@ class Show{
 						'name' => $episode->name,
 						'season' => $episode->season,
 						'number' => $episode->number,
-						'airDate' => (int) $airDate,
+						'airDate' => $airDate,
 						'aired' => isAired($airDate)
 					));
 				}else{
@@ -109,7 +109,7 @@ class Show{
 						'name' => $episode->name,
 						'season' => $episode->season,
 						'number' => $episode->number,
-						'airDate' => (int) $airDate,
+						'airDate' => $airDate,
 						'aired' => isAired($airDate)
 					));
 				}

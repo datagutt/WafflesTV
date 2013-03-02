@@ -3,9 +3,10 @@
 {% block content %}
 <h2>{{ show.name }}</h2>
 <div id="show">
+<a href="/show/stream/{{ show.url }}">Stream this show</a>
 {% for episode in episodes %}
 	<div class="episode">
-		<h3>{{ episode.name }} (Season {{ episode.season }}, Episode {{ episode.number }})</h3>
+		<h3>{{ episode.name }} (Season {{ episode.season }}, Episode {{ episode.number }}) (<a href="/show/stream/{{ show.url }}/{{ episode.season }}/{{ episode.number }}">Stream</a>)</h3>
 {% if episode.aired %}
 		<button class="download" data-season="{{ episode.season }}" data-number="{{ episode.number }}">Download this episode</button>
 {% else %}

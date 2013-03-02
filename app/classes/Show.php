@@ -78,7 +78,6 @@ class Show{
 		}else{
 			$serieEpisodes = $this->tvdb->getSerieEpisodes($this->tvdbID);
 			$eps = $serieEpisodes['episodes'];
-			var_dump($episode);
 			foreach($eps as $episode){
 				if(is_object($episode->firstAired)){
 					$airDate = $episode->firstAired->getTimeStamp();

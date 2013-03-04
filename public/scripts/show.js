@@ -4,6 +4,19 @@
 			if(jessie && jessie.areFeatures('query', 'forEach', 'attachListener', 'cancelDefault', 'createXhr', 'xhrSend')){
 				var show = window.location.pathname.split('/')[3];
 				var downloadButtons = jessie.query('.download');
+				var streamLinks = jessie.query('.stream');
+				var player = flowplayer('player', {
+					src: '/flowplayer.swf',
+					width: '70%',
+					height: 400
+				});
+				jessie.forEach(streamLinks, function(link){
+					jessie.attachListener(link, 'click', function(e){
+						player.setClip(link.href);
+						player.play();
+						jessie.cancelDefault(e);
+					});
+				});
 				jessie.forEach(downloadButtons, function(button){
 					jessie.attachListener(button, 'click', function download(e){
 						var season = button.getAttribute('data-season');

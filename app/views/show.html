@@ -1,12 +1,13 @@
-{% set scripts = ['show.js'] %}
+{% set scripts = ['show.js', 'lib/flowplayer.min.js'] %}
 {% extends "base.html" %}
 {% block content %}
 <h2>{{ show.name }}</h2>
 <div id="show">
 <a href="/show/stream/{{ show.url }}">Stream this show</a>
+<div id="player"></div>
 {% for episode in episodes %}
 	<div class="episode">
-		<h3>{{ episode.name }} (Season {{ episode.season }}, Episode {{ episode.number }}) (<a href="/show/stream/{{ show.url }}/{{ episode.season }}/{{ episode.number }}">Stream</a>)</h3>
+		<h3>{{ episode.name }} (Season {{ episode.season }}, Episode {{ episode.number }}) (<a href="/show/stream/{{ show.url }}/{{ episode.season }}/{{ episode.number }}" class="stream">Stream</a>)</h3>
 {% if episode.aired %}
 		<button class="download" data-season="{{ episode.season }}" data-number="{{ episode.number }}">Download this episode</button>
 {% else %}

@@ -70,4 +70,13 @@ if(is_array($config['autoload']['classes'])){
 
 // Now, run the app
 $app = new Front($twig);
+
+if(!isset($_SERVER['PHP_AUTH_USER'])){
+	header('WWW-Authenticate: Basic realm="WafflesTV"');
+	header('HTTP/1.0 401 Unauthorized');
+}else{
+	if($_SERVER['PHP_AUTH_USER'] !== $config['auth']['user'] || $_SERVER['PHP_AUTH_PW'] !== $config['auth']['password']){
+		die('Wrong username or password.');
+	}
+}
 $app->run();

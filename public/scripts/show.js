@@ -1,7 +1,7 @@
 (function(global){
 	if(jessie && jessie.isHostMethod && jessie.isHostMethod(Waffles, 'addToQueue')){
 		Waffles.addToQueue(function(){
-			if(jessie && jessie.areFeatures('query', 'forEach', 'attachListener', 'cancelDefault', 'createXhr', 'xhrSend')){
+			if(jessie && jessie.areFeatures('query', 'getElement', 'forEach', 'attachListener', 'cancelDefault', 'createXhr', 'xhrSend')){
 				var show = window.location.pathname.split('/')[3];
 				var downloadButtons = jessie.query('.download');
 				var streamLinks = jessie.query('.stream');
@@ -10,8 +10,12 @@
 					width: '70%',
 					height: 400
 				});
+				var playerEl = jessie.getElement(player.id());
+				playerEl.style.display = 'none';
 				jessie.forEach(streamLinks, function(link){
-					jessie.attachListener(link, 'click', function(e){
+					jessie.attachListener(link, 'click', function(e){									if(playerEl.style.display == 'none'){
+							playerEl.style.display = 'block';
+						}
 						player.setClip(link.href);
 						player.play();
 						jessie.cancelDefault(e);

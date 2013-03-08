@@ -14,6 +14,10 @@ header {
 header h1 {
 	float: left;
 }
+header h1 a {
+	color: inherit;
+	text-decoration: none;
+}
 header nav ul {
 	float: right;
 	height: 58px;

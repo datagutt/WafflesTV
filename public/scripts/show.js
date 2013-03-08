@@ -13,7 +13,8 @@
 				var playerEl = jessie.getElement(player.id());
 				playerEl.style.display = 'none';
 				jessie.forEach(streamLinks, function(link){
-					jessie.attachListener(link, 'click', function(e){									if(playerEl.style.display == 'none'){
+					jessie.attachListener(link, 'click', function(e){
+						if(playerEl.style.display == 'none'){
 							playerEl.style.display = 'block';
 						}
 						player.setClip(link.href);

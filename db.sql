@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `episodes` (
   `name` varchar(200) NOT NULL,
   `season` int(11) NOT NULL,
   `number` int(11) NOT NULL,
-  `airDate` mediumint(9) NOT NULL,
+  `airDate` bigint(20) NOT NULL,
   `watched` tinyint(1) NOT NULL,
   PRIMARY KEY (`episodeID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
